@@ -1,8 +1,10 @@
-version: '3.4'
+version: '2'
 
 services:
   samba:
-    image: dperson/samba
+    build:
+      context: .
+      dockerfile: Dockerfile.armhf
     environment:
       TZ: 'EST5EDT'
     networks:
@@ -19,8 +21,8 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - /mnt:/mnt:z
-    command: '-s "Mount;/mnt"'
+      - /media:/media:z
+    command: '-s "Music;/media/HDD500GB/Music"'
 
 networks:
   default:
